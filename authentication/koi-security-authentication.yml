@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/koi-security-extensiontotal-openapi.yml
+docs: https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
+notes: |
+  Koi's published ExtensionTotal API guide documents a single API-key header. There is no OAuth,
+  OIDC, or scope surface on the public API, so no scopes/ artifact is emitted. The Koi platform
+  console at docs.koi.ai sits behind an OIDC sign-in at auth.koi.security, but that flow is not
+  publicly documented and no discovery document is published.
+key_issuance:
+  anonymous: Free, rate-limited access with no key.
+  organizational: API keys issued by Koi; documented as having no rate limit.
+  request_url: https://app.extensiontotal.com/sponsor
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: |-
+    Organizational API key issued by Koi. Omit for free, rate-limited anonymous access. Koi's guide
+    documents the header case-insensitively as both `X-API-Key` and `x-api-key`.
+  sources:
+  - openapi/koi-security-extensiontotal-openapi.yml
