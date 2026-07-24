@@ -1,0 +1,190 @@
+openapi: 3.1.0
+info:
+  title: ExtensionTotal Risk API
+  version: '1.0'
+  summary: Risk assessment for Visual Studio Code marketplace extensions.
+  description: 'ExtensionTotal is Koi''s free community service for assessing the risk of Visual Studio Code
+
+    extensions. This API exposes the scoring endpoint used by the first-party ExtensionTotal VS Code
+
+    extension: given a marketplace extension identifier it returns a numeric risk score, a risk label,
+
+    and display metadata for the extension.
+
+
+    Anonymous callers are rate limited and receive HTTP 429 when the free limit is reached. Koi issues
+
+    organizational API keys, presented in the `X-API-Key` header, which Koi''s published guide describes
+
+    as having no rate limit.
+
+
+    This description was derived by API Evangelist from Koi''s published API guide and from the
+
+    request/response handling in Koi''s own open-source VS Code extension. It is not a Koi-published
+
+    artifact.
+
+    '
+  contact:
+    name: Koi
+    url: https://www.koi.ai/chat-with-us
+  x-origin:
+  - format: derived
+    url: https://github.com/extensiontotal/extensiontotal-vscode/blob/main/src/scanExtensions.ts
+servers:
+- url: https://app.extensiontotal.com/api
+  description: Production
+security:
+- ApiKeyAuth: []
+- {}
+tags:
+- name: Risk
+  description: Extension risk assessment.
+paths:
+  /getExtensionRisk:
+    post:
+      operationId: getExtensionRisk
+      summary: Get the risk assessment for a VS Code extension
+      description: 'Returns the ExtensionTotal risk assessment for a single Visual Studio Code extension,
+
+        identified by its marketplace identifier (`publisher.name`, for example `ms-python.python`).
+
+
+        Call without an API key for free, rate-limited access; supply an organizational key in the
+
+        `X-API-Key` header for unmetered access.
+
+        '
+      tags:
+      - Risk
+      parameters:
+      - name: X-Origin
+        in: header
+        required: false
+        description: 'Caller origin label sent by first-party clients. Koi''s VS Code extension sends `Extension`.
+
+          '
+        schema:
+          type: string
+          examples:
+          - Extension
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtensionRiskRequest'
+            examples:
+              byExtensionId:
+                summary: Look up a single extension by marketplace id
+                value:
+                  q: ms-python.python
+      responses:
+        '200':
+          description: Risk assessment for the requested extension.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtensionRisk'
+        '403':
+          description: 'Invalid API key. The first-party client treats a `403`, or a body equal to the string
+
+            `Invalid API key`, as an invalid-credential condition and stops scanning.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: 'Free rate limit reached. Koi directs callers to https://app.extensiontotal.com/sponsor to
+
+            obtain an API key.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ExtensionRiskRequest:
+      type: object
+      title: ExtensionRiskRequest
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: 'The Visual Studio Code marketplace extension identifier, in `publisher.name` form.
+
+            '
+          examples:
+          - ms-python.python
+        orgData:
+          $ref: '#/components/schemas/OrgData'
+    OrgData:
+      type: object
+      title: OrgData
+      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
+
+        so an organization can attribute a finding to the machine and user that reported it.
+
+        '
+      properties:
+        hostname:
+          type: string
+          description: Hostname of the machine performing the scan.
+        username:
+          type: string
+          description: Operating-system user performing the scan.
+    Error:
+      type: object
+      title: Error
+      description: 'Error condition. Koi''s client branches on the HTTP status code and on a plain-string body of
+
+        `Invalid API key`; no structured error envelope is documented.
+
+        '
+      properties:
+        message:
+          type: string
+    ExtensionRisk:
+      type: object
+      title: ExtensionRisk
+      description: 'Risk assessment for one extension. Only the fields consumed by Koi''s first-party client and
+
+        named in Koi''s published API guide are described here; the live response may carry more.
+
+        '
+      properties:
+        display_name:
+          type: string
+          description: Human-readable name of the extension.
+        version:
+          type: string
+          description: Extension version the assessment applies to.
+        risk:
+          type: number
+          description: 'Numeric risk score. Koi''s first-party client treats a score of `7` or greater as a high-risk
+
+            finding and raises a modal alert.
+
+            '
+        riskLabel:
+          type: string
+          description: Human-readable label for the risk score, rendered in the client's results pane.
+        updated_at:
+          type: string
+          description: When the assessment was last updated.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: 'Organizational API key issued by Koi. Omit for free, rate-limited anonymous access. Koi''s guide
+
+        documents the header case-insensitively as both `X-API-Key` and `x-api-key`.
+
+        '
