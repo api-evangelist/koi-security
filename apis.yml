@@ -1,23 +1,124 @@
 aid: koi-security
 name: Koi Security
-description: Koi Security is a company surfaced as a portfolio company of battery-ventures and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: 'Koi (formerly Koi Security, now operating as koi.ai) is an endpoint security
+  platform built for non-binary software — browser extensions, IDE and editor extensions,
+  open-source packages, MCP servers, AI models, AI agents, and containers — the install
+  surface that traditional EDR and MDM tooling was never designed to govern. The platform
+  ships three products: Koi Endpoint (agentless discovery and governance of every binary
+  and non-binary install across macOS, Windows, and Linux), Koi Wings (continuous risk
+  evaluation of code, behavior, publisher ownership changes, and update channels), and
+  Koi Gateway (a network-based gate in front of marketplaces, app stores, and registries).
+  Koi is widely known for the security research it publishes on software supply-chain
+  attacks including GlassWorm, Shai-Hulud, PhantomRaven, GreedyBear, and the first
+  malicious MCP server found in the wild. Koi also operates ExtensionTotal, a free
+  community risk-scoring service for Visual Studio Code extensions that exposes a public
+  HTTP API and a first-party VS Code extension. Koi raised $48M and has been acquired by
+  Palo Alto Networks.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/67bf17e426d92bdda54af956/689d7637775a71fd67d69618_link%20image.png
 url: https://raw.githubusercontent.com/api-evangelist/koi-security/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-acquired-by: palo-alto-networks
+x-tier: profiled
+x-tier-reason: public-api-and-artifacts
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Security
+- Endpoint Security
+- Supply Chain Security
+- Browser Extensions
+- Developer Tools
+- Threat Intelligence
+- MCP Security
+- Risk Scoring
+apis:
+- aid: koi-security:koi-security-risk-api
+  name: Koi Security Risk API
+  description: Extension risk assessment.
+  humanURL: >-
+    https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
+  baseURL: https://app.extensiontotal.com/api
+  tags:
+  - Risk
+  properties:
+  - type: OpenAPI
+    url: openapi/koi-security-risk-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
+  - type: SourceCode
+    url: https://github.com/extensiontotal/extensiontotal-vscode
+common:
+- type: Website
+  url: https://www.koi.ai/
+- type: DeveloperPortal
+  url: https://docs.koi.ai/
+- type: Documentation
+  url: https://docs.koi.ai/
+- type: APIReference
+  url: https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
+- type: Blog
+  url: https://www.koi.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/koi-security
+- type: SignUp
+  url: https://www.koi.ai/get-a-demo
+- type: Support
+  url: https://www.koi.ai/chat-with-us
+- type: TermsOfService
+  url: https://www.koi.ai/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.koi.ai/privacy-policy
+- type: StatusPage
+  url: https://status.koi.ai/
+- type: Lifecycle
+  url: lifecycle/koi-security-lifecycle.yml
+- type: Authentication
+  url: authentication/koi-security-authentication.yml
+- type: Conventions
+  url: conventions/koi-security-conventions.yml
+- type: ErrorCatalog
+  url: errors/koi-security-problem-types.yml
+- type: Conformance
+  url: conformance/koi-security-conformance.yml
+- type: DataModel
+  url: data-model/koi-security-data-model.yml
+- type: Packages
+  url: packages/koi-security-packages.yml
+- type: WellKnown
+  url: well-known/koi-security-well-known.yml
+- type: DomainSecurity
+  url: security/koi-security-domain-security.yml
+- type: MCPServer
+  url: mcp/koi-security-mcp.yml
+- type: LLMsTxt
+  url: llms/koi-security-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
