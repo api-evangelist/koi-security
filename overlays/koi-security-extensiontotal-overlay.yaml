@@ -1,0 +1,29 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the ExtensionTotal API
+  version: 1.0.0
+extends: openapi/koi-security-extensiontotal-openapi.yml
+x-generated: '2026-07-19'
+x-method: generated
+x-source: API Evangelist enrichment pipeline
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: koi-security
+    x-apievangelist-spec-origin: derived
+    x-apievangelist-note: |
+      Koi publishes no machine-readable OpenAPI. This description was derived from Koi's published API
+      guide and its first-party open-source VS Code client, and should be treated as a community
+      description rather than a provider contract.
+- target: $.paths['/getExtensionRisk'].post
+  update:
+    x-apievangelist-action-class: read
+    x-apievangelist-consequence: read
+    x-rate-limit-note: |
+      Anonymous callers are rate limited and receive 429. Koi's own client paces bulk scans at one
+      request per 1500 ms; mirror that pacing when scanning an estate.
+- target: $.components.schemas.ExtensionRisk.properties.risk
+  update:
+    x-apievangelist-threshold: |
+      Koi's first-party client treats a risk score of 7 or greater as a high-risk finding warranting a
+      blocking alert. Use the same threshold for parity with Koi's own tooling.

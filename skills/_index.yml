@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/koi-security-extensiontotal-openapi.yml
+notes: |
+  Koi publishes no AGENTS.md or provider-authored agent skills — searched koi.ai, docs.koi.ai, and
+  both GitHub orgs on 2026-07-19. The skill below is generated from the single public operation and
+  the conventions/errors artifacts in this repo; every step is grounded in the real operationId
+  `getExtensionRisk`.
+skills:
+- file: koi-security-screen-extension-risk.md
+  name: Screen a VS Code extension for risk with ExtensionTotal
+  description: >-
+    Look up ExtensionTotal risk scores by marketplace identifier, apply Koi's high-risk threshold, and
+    pace bulk scans against the free rate limit.
+  api: openapi/koi-security-extensiontotal-openapi.yml
+  operations:
+  - getExtensionRisk

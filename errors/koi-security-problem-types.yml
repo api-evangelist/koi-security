@@ -1,0 +1,30 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/koi-security-extensiontotal-openapi.yml ; https://github.com/extensiontotal/extensiontotal-vscode
+format: none
+notes: |
+  Koi publishes no error reference and no RFC 9457 problem+json envelope for the public ExtensionTotal
+  API. The catalog below is derived from the status codes Koi's own first-party client explicitly
+  branches on, which is the only authoritative error surface published. `format: none` records that
+  there is no structured error contract to conform to.
+problems:
+- status: 403
+  title: Invalid API key
+  detail: |
+    The supplied X-API-Key is not valid. Koi's first-party client also treats a response body equal to
+    the literal string `Invalid API key` as this condition, regardless of status code.
+  remediation: |
+    Re-enter a valid organizational API key, or omit the header entirely to fall back to free,
+    rate-limited anonymous access.
+  terminal: true
+  source_operation: openapi/koi-security-extensiontotal-openapi.yml#getExtensionRisk
+- status: 429
+  title: Free rate limit reached
+  detail: |
+    The anonymous free-tier rate limit has been exhausted for this caller.
+  remediation: |
+    Obtain an organizational API key at https://app.extensiontotal.com/sponsor — Koi's guide documents
+    organizational keys as having no rate limit. Koi's own client paces bulk scans at one request per
+    1500 ms and aborts on the first 429.
+  terminal: true
+  source_operation: openapi/koi-security-extensiontotal-openapi.yml#getExtensionRisk

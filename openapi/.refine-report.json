@@ -1,0 +1,14 @@
+{
+  "provider": "koi-security",
+  "sources": [
+    "koi-security-risk-api-openapi.yml"
+  ],
+  "outputs": [
+    "koi-security-risk-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,65 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/koi-security-extensiontotal-openapi.yml ; https://github.com/extensiontotal/extensiontotal-vscode
+docs: https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
+notes: |
+  Cross-cutting semantics for the public ExtensionTotal API, derived from Koi's published API guide
+  and from the request/response handling in Koi's first-party VS Code client. The public surface is a
+  single RPC-style POST operation, so several conventions that a larger REST API would carry simply do
+  not exist here — those are recorded as `supported: false` rather than guessed at.
+authentication:
+  style: api-key-header
+  header: X-API-Key
+  anonymous_allowed: true
+  see: authentication/koi-security-authentication.yml
+idempotency:
+  supported: false
+  notes: |
+    No idempotency key header or parameter is documented or present in the first-party client. The
+    single public operation is a read-only risk lookup expressed as POST, so it is naturally safe to
+    repeat, but Koi publishes no idempotency contract. No `Idempotency` pointer is emitted.
+pagination:
+  supported: false
+  notes: The API returns a single extension assessment per request; there is no collection endpoint.
+filtering:
+  style: request-body
+  parameter: q
+  notes: The `q` body field carries the marketplace extension identifier in `publisher.name` form.
+field_expansion:
+  supported: false
+metadata:
+  supported: true
+  field: orgData
+  notes: |
+    Optional `orgData` object (hostname, username) attached by the first-party client in organization
+    mode so a finding can be attributed to the reporting machine and user.
+request_tracing:
+  request_id_header: null
+  supported: false
+  notes: |
+    No request-id or correlation header is documented. The client does send an `X-Origin` header
+    labelling the caller (`Extension`), which is a caller-type hint rather than a trace id.
+versioning:
+  style: none
+  see: lifecycle/koi-security-lifecycle.yml
+error_envelope:
+  format: unstructured
+  notes: |
+    No RFC 9457 problem+json envelope. The first-party client branches on the HTTP status code and,
+    for invalid credentials, on a plain-string body equal to `Invalid API key`.
+  see: errors/koi-security-problem-types.yml
+rate_limiting:
+  supported: true
+  signal: http-status
+  status_code: 429
+  headers_published: false
+  notes: |
+    Anonymous callers hit a free rate limit signalled by HTTP 429; Koi directs callers to
+    https://app.extensiontotal.com/sponsor for a key. Koi's guide states organizational keys have no
+    rate limit. No RateLimit-* response headers are documented, so no rate-limits/ artifact is emitted.
+  client_behavior: |
+    Koi's own client paces bulk scans with a fixed 1500 ms sleep between requests and aborts the scan
+    on the first 429 or 403.
+content_type:
+  request: application/json
+  response: application/json

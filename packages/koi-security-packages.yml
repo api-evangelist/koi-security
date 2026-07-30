@@ -1,0 +1,48 @@
+generated: '2026-07-19'
+method: searched
+source: npm registry search, PyPI, GitHub org listings, VS Code Marketplace
+notes: |
+  Koi publishes no first-party server-side SDK on npm, PyPI, Maven Central, NuGet, pkg.go.dev,
+  RubyGems, Packagist, or crates.io — all searched on 2026-07-19 and all negative. The one
+  first-party distributable is the ExtensionTotal client for Visual Studio Code, published by the
+  `extensiontotal` publisher (MIT, maintained by Koi co-founder Amit Assaraf) and open-sourced in the
+  Koi-owned `extensiontotal` GitHub org. It is a client application rather than a library SDK, so no
+  `SDKs` pointer is emitted in apis.yml — there is no client library to count.
+packages:
+- language: typescript
+  registry: vscode-marketplace
+  name: extensiontotal.extensiontotal-vscode
+  display_name: ExtensionTotal Security
+  version: 1.3.6
+  url: https://marketplace.visualstudio.com/items?itemName=extensiontotal.extensiontotal-vscode
+  source: https://github.com/extensiontotal/extensiontotal-vscode
+  license: MIT
+  kind: editor-extension
+  official: true
+  description: |
+    Scans installed Visual Studio Code extensions against the ExtensionTotal API and surfaces risk
+    scores, high-risk alerts, and an org-mode reporting flow. This is the reference consumer of the
+    getExtensionRisk operation.
+registries_searched:
+- registry: npm
+  result: no first-party package
+- registry: pypi
+  result: no first-party package
+- registry: maven-central
+  result: no first-party package
+- registry: nuget
+  result: no first-party package
+- registry: pkg.go.dev
+  result: no first-party package
+- registry: rubygems
+  result: no first-party package
+- registry: packagist
+  result: no first-party package
+- registry: crates.io
+  result: no first-party package
+community:
+- language: python
+  name: extension-total-python
+  url: https://github.com/Jonas1312/extension-total-python
+  official: false
+  description: Third-party Python script that queries the ExtensionTotal API. Not maintained by Koi.

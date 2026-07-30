@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/koi-security-extensiontotal-openapi.yml
+notes: |
+  Koi publishes no hosted or remote MCP server — searched Koi's site, docs host, GitHub orgs
+  (koi-security, extensiontotal), and npm on 2026-07-19, all negative. Koi is a prolific publisher of
+  research *about* malicious MCP servers (the Postmark backdoor, the Framelink Figma command-injection
+  flaw), but ships none of its own. The tool below is a candidate derived from the one public
+  operation, not a Koi-published server.
+server:
+  name: koi-extensiontotal
+  transport: stdio
+  url: null
+tools:
+- name: get_extension_risk
+  description: |
+    Return the ExtensionTotal risk score and label for a Visual Studio Code extension, given its
+    marketplace identifier in publisher.name form.
+  source_operation: openapi/koi-security-extensiontotal-openapi.yml#getExtensionRisk
+  inputs:
+  - {name: q, type: string, required: true, description: Marketplace extension id, e.g. ms-python.python}
+  auth: X-API-Key header (optional; anonymous calls are rate limited)

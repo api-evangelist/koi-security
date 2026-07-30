@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: https://status.koi.ai/ ; https://www.koi.ai/blog/embracing-a-new-domain-name-koi-ai
+status_page:
+  url: https://status.koi.ai/
+  provider: Instatus
+  subscribe:
+  - email
+  - slack
+  components:
+  - Management Portal
+  - API
+  - Supply Chain Gateway
+  - Notifications
+  - Guardrails
+  - Discovery
+  - Publish
+  observed_state: All systems operational (2026-07-19)
+versioning:
+  scheme: none-published
+  notes: |
+    The public ExtensionTotal API is unversioned — the path is /api/getExtensionRisk with no version
+    segment, header, or date pin. No versioning policy is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: |
+    No deprecation policy, Sunset header support (RFC 8594), or Deprecation header support is
+    published. No `Deprecation` pointer is emitted in apis.yml as a result.
+sla:
+  url: null
+  uptime_target: null
+domain_migration:
+  from: koi.security
+  to: koi.ai
+  announcement: https://www.koi.ai/blog/embracing-a-new-domain-name-koi-ai
+  notes: |
+    koi.security 301-redirects to www.koi.ai. Some infrastructure hostnames still sit on the old
+    domain (auth.koi.security, dex.koi.security). The former ExtensionTotal web property
+    (extensiontotal.com, app.extensiontotal.com) redirects to dex.koi.security, though the API host
+    app.extensiontotal.com continues to serve the documented API path.
+corporate:
+  acquired_by: Palo Alto Networks
+  announcement: https://www.koi.ai/
+  notes: Acquisition announced on the Koi homepage; may affect the long-term life of these surfaces.
+deprecated_operations: []

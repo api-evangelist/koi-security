@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of /.well-known/ on every host in apis.yml and the OpenAPI servers[]
+notes: |
+  Probed on 2026-07-19. Koi publishes no /.well-known/ discovery documents on any host — no
+  security.txt (RFC 9116), no OIDC discovery, no RFC 8414 authorization-server metadata, no
+  api-catalog (RFC 9727), no ai-plugin.json. Recorded as an honest negative; nothing was saved.
+  app.extensiontotal.com answers every /.well-known/ path with a 301 redirect to dex.koi.security
+  rather than a document.
+hosts:
+- host: https://www.koi.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://app.extensiontotal.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+  - path: /.well-known/openid-configuration
+    status: 301
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+  - path: /.well-known/api-catalog
+    status: 301
+  - path: /.well-known/ai-plugin.json
+    status: 301
+- host: https://dex.koi.security
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

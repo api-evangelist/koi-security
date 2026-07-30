@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/koi-security-extensiontotal-openapi.yml
+notes: |
+  Entity graph derived from the schemas in the ExtensionTotal OpenAPI. The public API exposes a single
+  lookup, so the graph is small: a request identifies an extension and optionally carries reporting
+  context, and the response is that extension's risk assessment. Koi publishes no object reference, so
+  no id-prefix or domain conventions are recorded.
+entities:
+- name: ExtensionRiskRequest
+  description: Lookup request identifying one VS Code marketplace extension.
+  identifier:
+    field: q
+    form: publisher.name
+    example: ms-python.python
+  fields:
+  - {name: q, type: string, required: true, description: Marketplace extension identifier.}
+  - {name: orgData, type: object, required: false, description: Optional reporting context.}
+- name: OrgData
+  description: Machine and user attribution attached in organization mode.
+  fields:
+  - {name: hostname, type: string, description: Hostname of the scanning machine.}
+  - {name: username, type: string, description: OS user performing the scan.}
+- name: ExtensionRisk
+  description: Risk assessment returned for one extension.
+  fields:
+  - {name: display_name, type: string, description: Human-readable extension name.}
+  - {name: version, type: string, description: Version the assessment applies to.}
+  - {name: risk, type: number, description: Numeric risk score; >= 7 is treated as high risk.}
+  - {name: riskLabel, type: string, description: Human-readable label for the score.}
+  - {name: updated_at, type: string, description: When the assessment was last updated.}
+relationships:
+- from: ExtensionRiskRequest
+  to: OrgData
+  kind: has_one
+  via: orgData
+- from: ExtensionRiskRequest
+  to: ExtensionRisk
+  kind: resolves_to
+  via: q
+  description: |
+    The request's marketplace identifier resolves to exactly one ExtensionRisk assessment in the
+    getExtensionRisk response.

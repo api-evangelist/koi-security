@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/koi-security-extensiontotal-openapi.yml ; live probes 2026-07-19
+notes: |
+  Standards conformance for Koi's public API surface. Koi publishes no compliance program, trust
+  center, or named certification (SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP) on any public host — the
+  security-programs probe returned no trust center and no vulnerability-disclosure policy on
+  2026-07-19 — so no `Compliance` pointer is emitted in apis.yml.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; the public API uses a single API-key header.
+- id: oidc
+  conforms: false
+  evidence: |
+    No /.well-known/openid-configuration on any host. The Koi console does sign in via an OIDC flow at
+    auth.koi.security, but no discovery document is published.
+- id: api-keys
+  conforms: true
+  evidence: apiKey securityScheme in header (X-API-Key), documented in Koi's published API guide.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json responses; errors are status-code and plain-string based.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.koi.ai and dex.koi.security.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on all probed hosts.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support published.
+- id: json-api
+  conforms: false
+  evidence: Plain JSON request/response; no JSON:API media type or document structure.
+- id: pagination
+  conforms: false
+  evidence: Single-resource lookup only; no collection endpoint.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key contract published.
+- id: hsts
+  conforms: true
+  evidence: |
+    HSTS enabled on both www.koi.ai (max-age 31536000) and app.extensiontotal.com (max-age 63072000);
+    see security/koi-security-domain-security.yml.
+- id: tls13
+  conforms: true
+  evidence: TLSv1.3 negotiated on www.koi.ai and app.extensiontotal.com.
+- id: dnssec
+  conforms: false
+  evidence: DNSSEC not enabled on koi.ai or extensiontotal.com.
+- id: dmarc
+  conforms: true
+  evidence: DMARC published with policy quarantine on koi.ai and extensiontotal.com.
+- id: llms-txt
+  conforms: true
+  evidence: https://www.koi.ai/llms.txt served; captured verbatim in llms/koi-security-llms.txt.
