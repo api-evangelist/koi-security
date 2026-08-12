@@ -66,6 +66,15 @@ apis:
   - type: SourceCode
     url: https://github.com/extensiontotal/extensiontotal-vscode
 common:
+- type: Overlay
+  url: overlays/koi-security-extensiontotal-overlay.yaml
+- type: IssueTracker
+  url: https://github.com/extensiontotal/extensiontotal-vscode/issues
+- type: ContributionGuide
+  url: https://github.com/extensiontotal/extensiontotal-vscode/blob/main/.github/CONTRIBUTING.md
+- type: License
+  name: MIT
+  url: https://github.com/extensiontotal/extensiontotal-vscode/blob/main/LICENSE
 - type: Website
   url: https://www.koi.ai/
 - type: DeveloperPortal
