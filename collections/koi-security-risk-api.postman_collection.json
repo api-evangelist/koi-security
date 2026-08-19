@@ -1,0 +1,274 @@
+{
+  "item": [
+    {
+      "id": "5a9cc98b-35ed-4734-afb7-847012f0d8a4",
+      "name": "Risk",
+      "description": {
+        "content": "Extension risk assessment.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61755c77-cc08-442c-87a0-d00132faf435",
+          "name": "Get the risk assessment for a VS Code extension",
+          "request": {
+            "name": "Get the risk assessment for a VS Code extension",
+            "description": {
+              "content": "Returns the ExtensionTotal risk assessment for a single Visual Studio Code extension,\nidentified by its marketplace identifier (`publisher.name`, for example `ms-python.python`).\n\nCall without an API key for free, rate-limited access; supply an organizational key in the\n`X-API-Key` header for unmetered access.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getExtensionRisk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Caller origin label sent by first-party clients. Koi's VS Code extension sends `Extension`.\n",
+                "key": "X-Origin",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"q\": \"<string>\",\n  \"orgData\": {\n    \"hostname\": \"<string>\",\n    \"username\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9379e6e0-31fd-44bc-8c59-12eb708c8301",
+              "name": "Risk assessment for the requested extension.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getExtensionRisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Caller origin label sent by first-party clients. Koi's VS Code extension sends `Extension`.\n",
+                    "key": "X-Origin",
+                    "value": "Extension"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"ms-python.python\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_name\": \"string\",\n  \"version\": \"string\",\n  \"risk\": 6446.735395062957,\n  \"riskLabel\": \"string\",\n  \"updated_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3500809-2003-43de-b6b4-2c99f29ffb69",
+              "name": "Invalid API key. The first-party client treats a `403`, or a body equal to the string\n`Invalid API key`, as an invalid-credential condition and stops scanning.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getExtensionRisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Caller origin label sent by first-party clients. Koi's VS Code extension sends `Extension`.\n",
+                    "key": "X-Origin",
+                    "value": "Extension"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"ms-python.python\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efe93eb9-9b2a-4103-8a7e-3364a5176036",
+              "name": "Free rate limit reached. Koi directs callers to https://app.extensiontotal.com/sponsor to\nobtain an API key.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getExtensionRisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Caller origin label sent by first-party clients. Koi's VS Code extension sends `Extension`.\n",
+                    "key": "X-Origin",
+                    "value": "Extension"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"ms-python.python\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.extensiontotal.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "98b67998-49e3-4f84-8208-9de7f5ce68eb",
+    "name": "ExtensionTotal Risk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ExtensionTotal is Koi's free community service for assessing the risk of Visual Studio Code\nextensions. This API exposes the scoring endpoint used by the first-party ExtensionTotal VS Code\nextension: given a marketplace extension identifier it returns a numeric risk score, a risk label,\nand display metadata for the extension.\n\nAnonymous callers are rate limited and receive HTTP 429 when the free limit is reached. Koi issues\norganizational API keys, presented in the `X-API-Key` header, which Koi's published guide describes\nas having no rate limit.\n\nThis description was derived by API Evangelist from Koi's published API guide and from the\nrequest/response handling in Koi's own open-source VS Code extension. It is not a Koi-published\nartifact.\n\n\nContact Support:\n Name: Koi",
+      "type": "text/plain"
+    }
+  }
+}

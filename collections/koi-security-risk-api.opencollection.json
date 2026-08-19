@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ExtensionTotal Risk API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Risk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the risk assessment for a VS Code extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.extensiontotal.com/api/getExtensionRisk",
+            "headers": [
+              {
+                "name": "X-Origin",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the ExtensionTotal risk assessment for a single Visual Studio Code extension,\nidentified by its marketplace identifier (`publisher.name`, for example `ms-python.python`).\n\nCall without an API key for free, rate-limited access; supply an organizational key in the\n`X-API-Key` header for unmetered access.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
