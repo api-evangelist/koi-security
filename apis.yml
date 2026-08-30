@@ -80,6 +80,11 @@ apis:
   - type: SourceCode
     url: https://github.com/extensiontotal/extensiontotal-vscode
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/palo-alto-networks/
+  name: Palo Alto Networks
+  x-relationship: acquired
+  x-evidence: "Koi raised $48M and has been acquired by Palo Alto Networks."
 - type: Overlay
   url: overlays/koi-security-extensiontotal-overlay.yaml
 - type: IssueTracker
