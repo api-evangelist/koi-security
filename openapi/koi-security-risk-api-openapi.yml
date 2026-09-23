@@ -1,31 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ExtensionTotal Risk API
   version: '1.0'
   summary: Risk assessment for Visual Studio Code marketplace extensions.
   description: 'ExtensionTotal is Koi''s free community service for assessing the risk of Visual Studio Code
 
-    extensions. This API exposes the scoring endpoint used by the first-party ExtensionTotal VS Code
-
-    extension: given a marketplace extension identifier it returns a numeric risk score, a risk label,
-
-    and display metadata for the extension.
-
-
-    Anonymous callers are rate limited and receive HTTP 429 when the free limit is reached. Koi issues
-
-    organizational API keys, presented in the `X-API-Key` header, which Koi''s published guide describes
-
-    as having no rate limit.
-
-
-    This description was derived by API Evangelist from Koi''s published API guide and from the
-
-    request/response handling in Koi''s own open-source VS Code extension. It is not a Koi-published
-
-    artifact.
-
-    '
+    extensions.'
   contact:
     name: Koi
     url: https://www.koi.ai/chat-with-us
@@ -53,9 +33,7 @@ paths:
 
         Call without an API key for free, rate-limited access; supply an organizational key in the
 
-        `X-API-Key` header for unmetered access.
-
-        '
+        `X-API-Key` header for unmetered access.'
       tags:
       - Risk
       parameters:
@@ -109,36 +87,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ExtensionRiskRequest:
-      type: object
-      title: ExtensionRiskRequest
-      required:
-      - q
-      properties:
-        q:
-          type: string
-          description: 'The Visual Studio Code marketplace extension identifier, in `publisher.name` form.
-
-            '
-          examples:
-          - ms-python.python
-        orgData:
-          $ref: '#/components/schemas/OrgData'
-    OrgData:
-      type: object
-      title: OrgData
-      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
-
-        so an organization can attribute a finding to the machine and user that reported it.
-
-        '
-      properties:
-        hostname:
-          type: string
-          description: Hostname of the machine performing the scan.
-        username:
-          type: string
-          description: Operating-system user performing the scan.
     Error:
       type: object
       title: Error
@@ -178,6 +126,36 @@ components:
         updated_at:
           type: string
           description: When the assessment was last updated.
+    OrgData:
+      type: object
+      title: OrgData
+      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
+
+        so an organization can attribute a finding to the machine and user that reported it.
+
+        '
+      properties:
+        hostname:
+          type: string
+          description: Hostname of the machine performing the scan.
+        username:
+          type: string
+          description: Operating-system user performing the scan.
+    ExtensionRiskRequest:
+      type: object
+      title: ExtensionRiskRequest
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: 'The Visual Studio Code marketplace extension identifier, in `publisher.name` form.
+
+            '
+          examples:
+          - ms-python.python
+        orgData:
+          $ref: '#/components/schemas/OrgData'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
