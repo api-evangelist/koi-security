@@ -82,6 +82,8 @@ apis:
     https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization
   baseURL: https://app.extensiontotal.com/api
   tags:
+  - Risk Management
+  tags_raw:
   - Risk
   properties:
   - type: OpenAPI

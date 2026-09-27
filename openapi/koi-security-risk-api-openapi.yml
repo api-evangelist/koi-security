@@ -87,6 +87,21 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    OrgData:
+      type: object
+      title: OrgData
+      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
+
+        so an organization can attribute a finding to the machine and user that reported it.
+
+        '
+      properties:
+        hostname:
+          type: string
+          description: Hostname of the machine performing the scan.
+        username:
+          type: string
+          description: Operating-system user performing the scan.
     Error:
       type: object
       title: Error
@@ -98,6 +113,21 @@ components:
       properties:
         message:
           type: string
+    ExtensionRiskRequest:
+      type: object
+      title: ExtensionRiskRequest
+      required:
+      - q
+      properties:
+        q:
+          type: string
+          description: 'The Visual Studio Code marketplace extension identifier, in `publisher.name` form.
+
+            '
+          examples:
+          - ms-python.python
+        orgData:
+          $ref: '#/components/schemas/OrgData'
     ExtensionRisk:
       type: object
       title: ExtensionRisk
@@ -126,36 +156,6 @@ components:
         updated_at:
           type: string
           description: When the assessment was last updated.
-    OrgData:
-      type: object
-      title: OrgData
-      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
-
-        so an organization can attribute a finding to the machine and user that reported it.
-
-        '
-      properties:
-        hostname:
-          type: string
-          description: Hostname of the machine performing the scan.
-        username:
-          type: string
-          description: Operating-system user performing the scan.
-    ExtensionRiskRequest:
-      type: object
-      title: ExtensionRiskRequest
-      required:
-      - q
-      properties:
-        q:
-          type: string
-          description: 'The Visual Studio Code marketplace extension identifier, in `publisher.name` form.
-
-            '
-          examples:
-          - ms-python.python
-        orgData:
-          $ref: '#/components/schemas/OrgData'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
