@@ -87,21 +87,17 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    OrgData:
+    Error:
       type: object
-      title: OrgData
-      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
+      title: Error
+      description: 'Error condition. Koi''s client branches on the HTTP status code and on a plain-string body of
 
-        so an organization can attribute a finding to the machine and user that reported it.
+        `Invalid API key`; no structured error envelope is documented.
 
         '
       properties:
-        hostname:
+        message:
           type: string
-          description: Hostname of the machine performing the scan.
-        username:
-          type: string
-          description: Operating-system user performing the scan.
     ExtensionRiskRequest:
       type: object
       title: ExtensionRiskRequest
@@ -117,17 +113,21 @@ components:
           - ms-python.python
         orgData:
           $ref: '#/components/schemas/OrgData'
-    Error:
+    OrgData:
       type: object
-      title: Error
-      description: 'Error condition. Koi''s client branches on the HTTP status code and on a plain-string body of
+      title: OrgData
+      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
 
-        `Invalid API key`; no structured error envelope is documented.
+        so an organization can attribute a finding to the machine and user that reported it.
 
         '
       properties:
-        message:
+        hostname:
           type: string
+          description: Hostname of the machine performing the scan.
+        username:
+          type: string
+          description: Operating-system user performing the scan.
     ExtensionRisk:
       type: object
       title: ExtensionRisk
