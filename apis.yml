@@ -54,6 +54,9 @@ x-tier-reason: public-api-and-artifacts
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
+x-docs-platform: gitbook
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Company
 - Security
@@ -94,6 +97,9 @@ apis:
   - type: SourceCode
     url: https://github.com/extensiontotal/extensiontotal-vscode
 common:
+- type: CapabilityMap
+  url: capabilities/koi-security-capability-edges.yml
+  name: Koi Security Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/palo-alto-networks/
   name: Palo Alto Networks
