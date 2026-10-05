@@ -1,0 +1,27 @@
+slug: koi-security
+provider: Koi Security
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Risk
+  spec_file: koi-security-risk-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.74
+  evidence: POST /getExtensionRisk — "Get the risk assessment for a VS Code extension"; schemas ExtensionRiskRequest,
+    ExtensionRisk
+  reason: The endpoint returns a security risk assessment for third-party IDE extensions, part of Koi's
+    endpoint security governance of non-binary software. This is cybersecurity risk assessment of installed
+    software; left at L1 because the single operation does not clearly distinguish vulnerability management
+    from threat detection or supply-chain stewardship.
