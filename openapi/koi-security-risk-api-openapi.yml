@@ -113,21 +113,6 @@ components:
           - ms-python.python
         orgData:
           $ref: '#/components/schemas/OrgData'
-    OrgData:
-      type: object
-      title: OrgData
-      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
-
-        so an organization can attribute a finding to the machine and user that reported it.
-
-        '
-      properties:
-        hostname:
-          type: string
-          description: Hostname of the machine performing the scan.
-        username:
-          type: string
-          description: Operating-system user performing the scan.
     ExtensionRisk:
       type: object
       title: ExtensionRisk
@@ -156,6 +141,21 @@ components:
         updated_at:
           type: string
           description: When the assessment was last updated.
+    OrgData:
+      type: object
+      title: OrgData
+      description: 'Optional reporting context attached by the first-party client when organization mode is enabled,
+
+        so an organization can attribute a finding to the machine and user that reported it.
+
+        '
+      properties:
+        hostname:
+          type: string
+          description: Hostname of the machine performing the scan.
+        username:
+          type: string
+          description: Operating-system user performing the scan.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
