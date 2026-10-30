@@ -64,6 +64,111 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Koi Security is a company surfaced as a portfolio company of battery-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Koi (formerly Koi Security, now operating as koi.ai) is an endpoint security platform built for non-binary software — browser extensions, IDE and editor extensions, open-source packages, MCP servers, AI models, AI agents, and containers — the install surface that traditional EDR and MDM tooling was never designed to govern. The platform ships three products: Koi Endpoint (agentless discovery and governance of every binary and non-binary install across macOS, Windows, and Linux), Koi Wings (continuous risk evaluation of code, behavior, publisher ownership changes, and update channels), and Koi Gateway (a network-based gate in front of marketplaces, app stores, and registries). Koi is widely known for the security research it publishes on software supply-chain attacks including GlassWorm, Shai-Hulud, PhantomRaven, GreedyBear, and the first malicious MCP server found in the wild. Koi also operates ExtensionTotal, a free community risk-scoring service for Visual Studio Code extensions that exposes a public HTTP API and a first-party VS Code extension. Koi raised $48M and has been acquired by Palo Alto Networks.
 
-Backed by: battery-ventures
+**Areas:** Company · Security · Endpoint Security · Supply Chain Security · Browser Extension · Developer Tools · Threat Intelligence · MCP Security · Risk Scoring
+
+## Koi Security on APIs.io
+
+Everything profiled for Koi Security is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/koi-security/](https://apis.io/providers/koi-security/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Koi Security Risk API](https://apis.io/apis/koi-security/koi-security-risk-api/) — Extension risk assessment.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [koi-extensiontotal](https://apis.io/servers/koi-security/koi-extensiontotal/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [ExtensionTotal Risk API](https://apis.io/collections/koi-security/open-koi-security-risk-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Koi Security Extensiontotal Overlay](https://apis.io/overlays/koi-security/koi-security-extensiontotal-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Koi Security Authentication](https://apis.io/security/koi-security/koi-security-authentication/)
+- [Koi Security Domain Security](https://apis.io/security/koi-security/koi-security-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.koi.ai/)
+- [Documentation](https://docs.koi.ai/)
+- [API reference](https://www.koi.ai/blog/6-6-uncover-hidden-risks-cisos-guide-to-using-extensiontotal-api-for-your-organization)
+- [Sign up](https://www.koi.ai/get-a-demo)
+- [Support](https://www.koi.ai/chat-with-us)
+- [Blog](https://www.koi.ai/blog)
+- [Terms of service](https://www.koi.ai/terms-and-conditions)
+- [Privacy policy](https://www.koi.ai/privacy-policy)
+- [GitHub](https://github.com/koi-security)
+- [Status](https://status.koi.ai/)
+
+## API Evangelist rating
+
+**Kin Score 34.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 53.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.0 |
+| Access clarity | 34.2 |
+
+**Agent readiness 27.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/koi-security/](https://apis.io/providers/koi-security/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Koi Security: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/koi-security/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
